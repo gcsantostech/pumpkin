@@ -1,12 +1,12 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="assets/imgs/logo.svg" type="image/x-icon">
-  <link rel="stylesheet" href="css/global.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="assets/imgs/logo.svg" type="image/x-icon" />
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
       rel="stylesheet"
       type="text/css"
       href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"
@@ -16,27 +16,48 @@
       type="text/css"
       href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"
     />
-  <title>Pumpkin | Comunidade para Designers</title>
-</head>
-<body>
-  <header class="mainHeader">
-    <nav>
-      <img src="assets/imgs/logo.svg" id="logoPumpkin" alt="Logo Abóbora">
-      <div class="menu">
-        <ul>
-          <a href="#home">Início</a>
-          <a href="#howWorks">Como funciona</a>
-          <a href="#dashboard">Dashboard</a>
-          <a href="#aboutUs">Sobre nós</a>
-        </ul>
+    <title>Pumpkin | Comunidade para Designers</title>
+  </head>
+  <body>
+    <header class="mainHeader">
+      <nav>
+        <a href="/#">
+          <img src="assets/imgs/logo.svg" id="logoPumpkin" alt="Logo Abóbora" />
+        </a>
+        <div class="menu">
+          <ul>
+            <a href="#home" class="active">Início</a>
+            <a href="#howWorks">Como funciona</a>
+            <a href="#dashboard">Dashboard</a>
+            <a href="#aboutUs">Sobre nós</a>
+          </ul>
+        </div>
+        <a href="registerLogin/login.html">
+          <button class="btnGlass">Entrar</button>
+        </a>
+      </nav>
+    </header>
+    <section id="home">
+      <div class="mainTitle">
+        <h1>Pumpkin</h1>
+        <div class="subtitle">
+          <p>
+            Referências e identidade visual <span class="keyword">orginal</span>
+          </p>
+          <p>fora do clichê dos <span class="keyword">algoritimos</span></p>
+        </div>
       </div>
-      <a href="">
-        <button class="btnGlass">Entrar</button>
-      </a>
-    </nav>
-  </header>
-  <section id="home">
-    <h1>Pumpkin</h1>
-  </section>
-</body>
+    </section>
+  </body>
 </html>
+<script>
+  const links = document.querySelectorAll("ul a");
+  links.forEach((link) =>
+    link.addEventListener("click", () => linkClicked(link)),
+  );
+
+  const linkClicked = (link) => {
+    links.forEach((link) => link.classList.remove("active"));
+    link.classList.add("active");
+  };
+</script>

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/login.css" />
+    <link rel="shortcut icon" href="../assets/imgs/logo.svg" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"
+    />
+    <script src="../js/login.js" defer></script>
+    <title>Login | Pumpkin</title>
+  </head>
+  <body>
+    <header class="mainHeader">
+      <nav>
+        <a href="/#">
+          <img src="../assets/imgs/logo.svg" id="logoPumpkin" alt="Logo Abóbora" />
+        </a>
+        <div class="menu">
+          <ul>
+            <a href="/#home">Início</a>
+            <a href="/#howWorks">Como funciona</a>
+            <a href="/#dashboard">Dashboard</a>
+            <a href="/#aboutUs">Sobre nós</a>
+          </ul>
+        </div>
+        <a href="login.html">
+          <button class="btnGlass">Entrar</button>
+        </a>
+      </nav>
+    </header>
+    
+    <div class="loginContent">
+      <div class="cardForm">
+        <form>
+          <h2>Entrar na conta</h2>
+          <div class="rowForm">
+            <label for="iptEmail" class="labelForm"
+              >Informe seu sobrenome</label
+            >
+            <input
+              type="text"
+              id="iptEmail"
+              class="inputForm"
+              placeholder="example@email.com"
+            />
+            <span id="inputErrorEmail"></span>
+          </div>
+
+          <div class="rowForm">
+            <label for="iptPassword" class="labelForm">Informe senha</label>
+            <input
+              type="text"
+              id="iptPassword"
+              class="inputForm"
+              placeholder="Sua senha"
+            />
+            <span id="inputErrorPassword"></span>
+          </div>
+
+          <button class="btnGlass">Entrar</button>
+          <p class="description">
+            Não tem uma conta? <a href="register.html">Cadastrar-se</a>
+          </p>
+        </form>
+      </div>
+      <p id="alertError" style="position: absolute; bottom: 0; right: 0; padding: 1rem; color: red; font-weight: 600;"></p>
+    </div>
+  </body>
+</html>

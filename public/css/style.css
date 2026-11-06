@@ -1,0 +1,42 @@
+body {
+  background-color: var(--colorBlack);
+}
+
+#home {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+.mainTitle {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 5rem;
+  gap: 1rem;
+}
+
+.mainTitle h1 {
+  font-family: var(--fontTitle);
+  color: var(--colorOffWhite);
+  color: var(--colorOrange);
+  font-size: 4rem;
+}
+
+.mainTitle .subtitle {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.mainTitle .subtitle p {
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.mainTitle .subtitle .keyword {
+  color: var(--colorOrange);
+}

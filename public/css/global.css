@@ -12,10 +12,75 @@
   --colorOrange: #FB5616;
   --colorBlack: #121212;
   --colorOffWhite: #FFFFED;
+  --colorTransparent: #ffffff10;
   --fontTitle: "Notable", sans-serif;
   --fontContent: "Poppins", sans-serif;
+  --borderRadius: 1rem;
 }
 
 body {
   font-family: var(--fontContent);
+  background-color: var(--colorBlack);
+  color: var(--colorOffWhite);
+}
+
+.mainHeader {
+  display: flex;
+  width: 100vw;
+  font-size: 1rem;
+  padding-block: 1rem;
+  position: fixed;
+  z-index: 100;
+}
+
+.mainHeader nav {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-inline: 1.5rem;
+  align-items: center;
+}
+
+#logoPumpkin {
+  width: 2.5rem;
+}
+
+.menu {
+  background-color: var(--colorTransparent);
+  backdrop-filter: blur(10px);
+  /* padding-block: 0.8rem; */
+  border-radius: 10rem;
+}
+
+.menu ul {
+  display: flex;
+  /* gap: 2.5rem; */
+}
+
+.menu ul a {
+  color: var(--colorOffWhite);
+  padding: 0.8rem 1rem;
+  font-weight: 600;
+  transition:  0.3s ease;
+}
+
+.menu ul a:hover {
+  background-color: var(--colorTransparent);
+  border-radius: 10rem;
+}
+
+.menu ul a.active {
+  background-color: var(--colorTransparent);
+  border-radius: 10rem;
+}
+
+.btnGlass {
+  background-color: var(--colorTransparent);
+  color: var(--colorOffWhite);
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0.6rem 1rem;
+  border-radius: 20rem;
+  backdrop-filter: blur(2rem);
+  cursor: pointer;
 }

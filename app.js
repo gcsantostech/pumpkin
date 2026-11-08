@@ -1,4 +1,4 @@
-const ambiente_processo = "desenvolvimento";
+const ambiente_processo = "producao";
 
 const caminho_env = ambiente_processo === "producao" ? ".env" : ".env.dev";
 
@@ -13,6 +13,7 @@ const HOST_APP = process.env.APP_HOST;
 const app = express();
 
 const indexRouter = require("./src/routes/index");
+const usuarioRouter = require("./src/routes/user");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -21,8 +22,9 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(cors());
 
 app.use("/", indexRouter);
+app.use("/user", usuarioRouter);
 
-app.listen(PORTA_APP, function () {
+app.listen(PORTA_APP, () => {
   console.log(`
     ##   ##  ######   #####             ####       ##     ######     ##              ##  ##    ####    ######  
     ##   ##  ##       ##  ##            ## ##     ####      ##      ####             ##  ##     ##         ##  

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="../assets/imgs/logo.svg"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <script src="../js/sessao.js" defer></script>
+    <script src="../js/alertMessage.js" defer></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"
+    />
+    <title>Pumpkin</title>
+  </head>
+  <body>
+    <aside class="sideNav">
+      <div class="logoContent">
+        <a href="/#">
+          <img
+            id="logoPumpkin"
+            src="../assets/imgs/logo.svg"
+            alt="Logo Abóbora"
+          />
+        </a>
+      </div>
+
+      <div class="sideMenu">
+        <div class="btnNav active">
+          <i class="ph ph-house"></i>
+          <button>Feed</button>
+        </div>
+        <div class="btnNav">
+          <i class="ph ph-plus"></i>
+          <button>Criar</button>
+        </div>
+        <div class="btnNav">
+          <i class="ph ph-chart-bar"></i>
+          <button>Dashboard</button>
+        </div>
+      </div>
+
+      <div class="sideFooter">
+        <div class="perfil">
+          <img src="../assets/imgs/perfil.jpeg" alt="" />
+          <span id="username">@</span>
+        </div>
+        <div class="logout">
+          <button class="" onclick="logoutSession()">
+            <i class="ph ph-sign-out"></i>
+            Sair
+          </button>
+        </div>
+      </div>
+    </aside>
+    <div class="alertMessage">
+      <p></p>
+    </div>
+  </body>
+</html>

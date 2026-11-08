@@ -12,6 +12,41 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
 });
 
+function registerUser() {
+  if (isEmpty())
+    return;
+
+  fetch("/user/register", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      name: fullName.value,
+      email: email.value,
+      username: username.value,
+      password: password.value,
+    })
+  })
+  .then(res => {
+    if (res.ok) {
+      return res.json().then(json => {
+        alertMessage("success", "Cadastro realizado com sucesso!");
+        setTimeout(() => {
+          window.location = "../login/index.html";
+        }, 1000);
+      });
+    } else {
+      return res.json().then(json => {
+        alertMessage("error", json.message)
+      });
+    }
+  })
+  .catch(error => {
+    console.log(error)
+    alertMessage("error", error);
+  });
+}
 
 const validateName = () => {
   const regex = /^[a-zA-ZÀ-ÿ ]+$/;

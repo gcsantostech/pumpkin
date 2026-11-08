@@ -1,6 +1,6 @@
 const usuarioModel = require("../models/userModel");
 
-function authenticate(req, res) {
+function authenticateUser(req, res) {
   const email = req.body.email;
   const password = req.body.password;
 
@@ -47,6 +47,6 @@ function registerUser(req, res) {
 }
 
 module.exports = {
-  authenticate,
+  authenticateUser,
   registerUser,
 };

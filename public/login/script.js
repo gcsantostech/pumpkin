@@ -7,6 +7,46 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
 });
 
+function authenticateUser() {
+  if (isEmpty()) 
+    return;
+
+  fetch("/user/authenticate", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email: email.value,
+      password: password.value,
+    })
+  })
+  .then(res => {
+    if (res.ok) {
+      return res.json()
+      .then(json => {
+
+        sessionStorage.EMAIL_USER = json.email;
+        sessionStorage.USERNAME_USER = json.username;
+        sessionStorage.ID_USER = json.id;
+        
+        alertMessage("success", `Bem vindo ${json.username}!`);
+        setTimeout(() => {
+          window.location = "/userArea/feed.html";
+        }, 1000);
+      });
+    } else {
+      return res.json().then(json => {
+        alertMessage("error", json.message);
+      })
+    }
+  })
+  .catch(error => {
+    console.log(error);
+    alertMessage("error", "Erro ao tentar realizar o login.")
+  });
+}
+
 const isEmpty = () => {
   inputErrorEmail.innerHTML = "";
   inputErrorPassword.innerHTML = "";

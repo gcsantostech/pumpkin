@@ -32,7 +32,7 @@ function authenticateUser() {
         
         alertMessage("success", `Bem vindo ${json.username}!`);
         setTimeout(() => {
-          window.location = "/userArea/feed.html";
+          window.location = "/userArea/index.html";
         }, 1000);
       });
     } else {

@@ -1,0 +1,65 @@
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+.loginContent {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.cardForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 1rem;
+}
+
+.cardForm form {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--colorTransparent);
+  padding: 2rem;
+  gap: 0.5rem;
+  width: 40rem;
+  border-radius: var(--borderRadius);
+  backdrop-filter: blur(1rem);
+}
+
+.rowForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  overflow: hidden;
+}
+
+.rowForm span {
+  color: var(--colorError);
+  font-weight: 500;
+  max-width: 38rem;
+}
+
+.description {
+  text-align: center;
+}
+
+.description a {
+  color: var(--colorOrange);
+  font-weight: 600;
+}
+
+.inputForm {
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  background-color: transparent;
+  border: solid var(--colorTransparent) 3px;
+  color: var(--colorOffWhite);
+  font-weight: 600;
+}
+
+.labelForm {
+  font-weight: 500;
+}

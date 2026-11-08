@@ -1,0 +1,42 @@
+const mysql = require("mysql2");
+
+// CONEXÃO DO BANCO MYSQL SERVER
+const mySqlConfig = {
+  host: process.env.DB_HOST,
+  database: process.env.DB_DATABASE,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT,
+};
+
+function execute(instruction) {
+  if (
+    process.env.AMBIENTE_PROCESSO !== "producao" &&
+    process.env.AMBIENTE_PROCESSO !== "desenvolvimento"
+  ) {
+    console.log(
+      "\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM .env OU dev.env OU app.js\n",
+    );
+    return Promise.reject("AMBIENTE NÃO CONFIGURADO EM .env");
+  }
+
+  return new Promise((resolve, reject) => {
+    const connection = mysql.createConnection(mySqlConfig);
+    connection.connect();
+    connection.query(instruction, (error, result) => {
+      connection.end();
+      if (error) {
+        reject(error);
+      }
+      console.log(result);
+      resolve(result);
+    });
+    connection.on("error", (erro) => {
+      return ("ERRO NO MySQL SERVER: ", erro.sqlMessage);
+    });
+  });
+}
+
+module.exports = {
+  execute,
+};

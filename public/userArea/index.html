@@ -10,9 +10,12 @@
     />
     <link rel="stylesheet" href="../css/global.css" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="dashboard/style.css" />
     <script src="script.js" defer></script>
     <script src="../js/sessao.js" defer></script>
     <script src="../js/alertMessage.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+    <script src="dashboard/script.js" defer></script>
     <link
       rel="stylesheet"
       type="text/css"
@@ -26,47 +29,82 @@
     <title>Pumpkin</title>
   </head>
   <body>
-    <aside class="sideNav">
-      <div class="logoContent">
-        <a href="/#">
-          <img
-            id="logoPumpkin"
-            src="../assets/imgs/logo.svg"
-            alt="Logo Abóbora"
-          />
-        </a>
-      </div>
+    <div class="userArea">
+      <aside class="sideNav">
+        <div class="logoContent">
+          <a href="/#">
+            <img
+              id="logoPumpkin"
+              src="../assets/imgs/logo.svg"
+              alt="Logo Abóbora"
+            />
+          </a>
+        </div>
+        <div class="sideMenu">
+          <div class="btnNav active">
+            <i class="ph ph-chats-circle"></i>
+            <button>Forum</button>
+          </div>
+          <div class="btnNav">
+            <i class="ph ph-check-circle"></i>
+            <button>Testes</button>
+          </div>
+          <div class="btnNav">
+            <i class="ph ph-chart-bar"></i>
+            <button>Dashboard</button>
+          </div>
+        </div>
+        <div class="sideFooter">
+          <div class="perfil">
+            <img src="../assets/imgs/perfil.jpeg" alt="" />
+            <span id="username">@</span>
+          </div>
+          <div class="logout">
+            <button class="" onclick="logoutSession()">
+              <i class="ph ph-sign-out"></i>
+              Sair
+            </button>
+          </div>
+        </div>
+      </aside>
+      <div class="pages">
+        <div class="dashboard">
+          <h1 class="title">Dashboard</h1>
+          <div class="kpis">
+            <div class="kpi">
+              <span class="kpiTitle">Perfil predominante</span>
+              <span class="kpiPerfil">Ousado <span>80%</span></span>
+              <span class="kpiSubtitle">Maior pontuação</span>
+            </div>
+            <div class="kpi">
+              <span class="kpiTitle">Quizzes concluídos</span>
+              <span class="kpiValue">3</span>
+              <span class="kpiSubtitle">Total de tentivas</span>
+            </div>
+            <div class="kpi">
+              <span class="kpiTitle">Perfil secundário</span>
+              <span class="kpiSubPerfil">Minimalista <span>72%</span></span>
+              <span class="kpiSubtitle">Segunda maior pontuação</span>
+            </div>
+            <div class="kpi">
+              <span class="kpiTitle">Participação do perfil predominante</span>
+              <span class="kpiValue">32%</span>
+            </div>
+          </div>
 
-      <div class="sideMenu">
-        <div class="btnNav active">
-          <i class="ph ph-house"></i>
-          <button>Feed</button>
-        </div>
-        <div class="btnNav">
-          <i class="ph ph-plus"></i>
-          <button>Criar</button>
-        </div>
-        <div class="btnNav">
-          <i class="ph ph-chart-bar"></i>
-          <button>Dashboard</button>
+          <div class="charts">
+            <div class="mainChart">
+              <canvas id="chartRadar"></canvas>
+            </div>
+            <div class="auxiliaryChart">
+              <canvas id="chartDoughnut"></canvas>
+            </div>
+          </div>
         </div>
       </div>
-
-      <div class="sideFooter">
-        <div class="perfil">
-          <img src="../assets/imgs/perfil.jpeg" alt="" />
-          <span id="username">@</span>
-        </div>
-        <div class="logout">
-          <button class="" onclick="logoutSession()">
-            <i class="ph ph-sign-out"></i>
-            Sair
-          </button>
-        </div>
+      <div class="alertMessage">
+        <p></p>
       </div>
-    </aside>
-    <div class="alertMessage">
-      <p></p>
     </div>
   </body>
 </html>

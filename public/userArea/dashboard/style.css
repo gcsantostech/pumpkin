@@ -1,0 +1,81 @@
+.dashboard {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  gap: 2rem;
+  width: 100%;
+  color: var(--colorOffWhite);
+}
+
+.title {
+  font-family: var(--fontTitle);
+  color: var(--colorOrange);
+}
+
+.subtile {
+  font-size: 1.5rem;
+  color: var(--colorOrange);
+}
+
+.kpis {
+  display: flex;
+  gap: 1rem;
+}
+
+.kpi {
+  display: flex;
+  flex-direction: column;
+  border: solid var(--colorTransparent);
+  padding: 1rem;
+  border-radius: var(--borderRadius);
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.kpiTitle {
+  font-weight: 600;
+}
+
+.kpiSubtitle {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.kpiValue {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.kpiPerfil {
+  font-family: var(--fontTitle);
+  color: var(--colorOrange); 
+  font-size: 1.2rem;
+}
+
+.kpiSubPerfil {
+  font-family: var(--fontTitle);
+  color: var(--colorOrange); 
+  font-size: 1.2rem;
+}
+
+.charts {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  gap: 1.5rem;
+}
+
+.mainChart {
+  background-color: var(--colorTransparent);
+  padding: 1rem;
+  border-radius: var(--borderRadius);
+  width: 50vw;
+  height: 65vh;
+}
+
+.auxiliaryChart {
+  background-color: var(--colorTransparent);
+  padding: 2rem;
+  border-radius: var(--borderRadius);
+}

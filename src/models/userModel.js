@@ -7,7 +7,7 @@ function authenticate(email, senha) {
     senha,
   );
   const instrucaoSql = `
-        SELECT id, nome_completo, email, username FROM usuario WHERE email = '${email}' AND senha = '${senha}';
+        SELECT id, full_name, email, username FROM users WHERE email = '${email}' AND passwd = SHA2('${senha}', 256);
     `;
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.execute(instrucaoSql);
@@ -15,8 +15,8 @@ function authenticate(email, senha) {
 
 function registerUser(nome, email, username, senha) {
   const instrucaoSql = `
-    INSERT INTO usuario (nome_completo, email, username, senha) VALUES 
-    ('${nome}', '${email}', '${username}', '${senha}')
+    INSERT INTO users (full_name, email, username, passwd) VALUES 
+    ('${nome}', '${email}', '${username}', SHA2('${senha}', 256))
   `;
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);

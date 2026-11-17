@@ -1,10 +1,10 @@
-.dashboard {
-  height: 100vh;
+#dashboard.active {
   display: flex;
+  width: 100%;
+  height: 100vh;  
   flex-direction: column;
   padding: 2rem;
   gap: 2rem;
-  width: 100%;
   color: var(--colorOffWhite);
 }
 
@@ -49,13 +49,13 @@
 
 .kpiPerfil {
   font-family: var(--fontTitle);
-  color: var(--colorOrange); 
+  color: var(--colorOrange);
   font-size: 1.2rem;
 }
 
 .kpiSubPerfil {
   font-family: var(--fontTitle);
-  color: var(--colorOrange); 
+  color: var(--colorOrange);
   font-size: 1.2rem;
 }
 
@@ -78,4 +78,5 @@
   background-color: var(--colorTransparent);
   padding: 2rem;
   border-radius: var(--borderRadius);
+  height: 65vh;
 }

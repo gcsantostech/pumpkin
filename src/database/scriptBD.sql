@@ -1,79 +1,86 @@
--- Depois remover permissão de alter
 CREATE DATABASE pumpkin;
 USE pumpkin;
 
-CREATE TABLE usuario (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-    nome_completo VARCHAR(100) NOT NULL,
+CREATE TABLE users (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    full_name VARCHAR(100) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
     username VARCHAR(15) UNIQUE NOT NULL,
-    senha VARCHAR(8) NOT NULL
+    passwd VARCHAR(100) NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE posts (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-    titulo VARCHAR(100) UNIQUE NOT NULL,
-    descricao VARCHAR(100) NULL,
-    curtidas INT NULL,
-    salvamentos INT NULL,
-    usuario_id INT NOT NULL,
-    CONSTRAINT cfk_usuario_posts FOREIGN KEY (usuario_id)
-    REFERENCES usuario(id)
+CREATE TABLE quiz (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(50) NOT NULL,
+    quiz_description VARCHAR(255) NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE cores (
-	id INT PRIMARY KEY,
-    cor VARCHAR(8) NOT NULL,
-    descricao VARCHAR(20)
+CREATE TABLE question (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    quiz_id INT NOT NULL,
+    question_text VARCHAR(255) NOT NULL,
+    CONSTRAINT ct_fk_quiz_question
+        FOREIGN KEY (quiz_id)
+            REFERENCES quiz (id)
 );
 
-CREATE TABLE fontes (
-	id INT PRIMARY KEY,
-    fonte VARCHAR(8) NOT NULL,
-    descricao VARCHAR(20)
+CREATE TABLE answer_option (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    question_id INT NOT NULL,
+    option_text VARCHAR(255) NOT NULL,
+    CONSTRAINT ct_fk_question_answer_option
+        FOREIGN KEY (question_id)
+            REFERENCES question (id)
 );
 
-CREATE TABLE posts_cores (
-	posts_id INT,
-    cores_id INT,
-    PRIMARY KEY (posts_id, cores_id),
-    FOREIGN KEY (posts_id) 
-		REFERENCES posts (id),
-	FOREIGN KEY (cores_id)
-    REFERENCES cores (id)
+CREATE TABLE creative_profile (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    profile_name VARCHAR(50) NOT NULL,
+    description VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE posts_fontes (
-	posts_id INT,
-    fontes_id INT,
-    PRIMARY KEY (posts_id, fontes_id),
-    FOREIGN KEY (posts_id) 
-		REFERENCES posts (id),
-	FOREIGN KEY (fontes_id)
-    REFERENCES fontes (id)
+CREATE TABLE option_profile_score (
+    option_id INT NOT NULL,
+    profile_id INT NOT NULL,
+    score INT NOT NULL,
+    PRIMARY KEY (option_id, profile_id),
+	FOREIGN KEY (option_id)
+		REFERENCES answer_option (id),
+    FOREIGN KEY (profile_id)
+		REFERENCES creative_profile (id)
 );
 
-CREATE TABLE colecao (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-    dt_salvamento DATETIME,
-    usuario_id INT NOT NULL,
-    CONSTRAINT cfk_usuario_colecao FOREIGN KEY (usuario_id)
-    REFERENCES usuario(id)
+CREATE TABLE quiz_attempt (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    quiz_id INT NOT NULL,
+    completed_at DATETIME,
+    CONSTRAINT ct_fk_quiz_attempt_user
+        FOREIGN KEY (user_id)
+            REFERENCES users (id),
+    CONSTRAINT ct_fk_quiz_attempt_quiz
+        FOREIGN KEY (quiz_id)
+            REFERENCES quiz (id)
 );
 
-CREATE table salvos (
-	colecao_id INT,
-    posts_id INT,
-    PRIMARY KEY (colecao_id, posts_id),
-    FOREIGN KEY (colecao_id) 
-		REFERENCES colecao (id),
-	FOREIGN KEY (posts_id)
-    REFERENCES posts (id)
+CREATE TABLE user_answer (
+    attempt_id INT NOT NULL,
+    question_id INT NOT NULL,
+    option_id INT NOT NULL,
+    PRIMARY KEY (attempt_id, question_id),
+	FOREIGN KEY (attempt_id)
+		REFERENCES quiz_attempt (id),
+    FOREIGN KEY (question_id)
+		REFERENCES question (id),
+	FOREIGN KEY (option_id)
+		REFERENCES answer_option (id)
 );
 
-INSERT INTO usuario (nome_completo, email, username, senha) VALUES 
-('Gabriel Cavalcante', 'gcsantos@sptech.school', 'gcsantos', '1447');
+INSERT INTO users (full_name, email, username, passwd) VALUES 
+('Gabriel Cavalcante', 'gcsantos@sptech.school', 'gcsantos', SHA2('Admin@123', 256));
 
 SELECT * 
-FROM usuario 
+FROM users 
 ORDER BY id DESC;

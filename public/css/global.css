@@ -8,6 +8,10 @@
   border: none;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --colorOrange: #FB5616;
   --colorBlack: #121212;
@@ -77,6 +81,10 @@ body {
 }
 
 .btnGlass {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
   background-color: var(--colorTransparent);
   color: var(--colorOffWhite);
   font-weight: bold;
@@ -85,6 +93,11 @@ body {
   border-radius: 20rem;
   backdrop-filter: blur(2rem);
   cursor: pointer;
+}
+
+.btnGlass i {
+  font-size: 1.2rem;
+  color: var(--colorOrange);
 }
 
 .alertMessage {
@@ -110,4 +123,15 @@ body {
 
 .alertMessage.error {
   color: var(--colorError);
+}
+
+.keyword {
+  color: var(--colorOrange);
+  font-weight: 600;
+}
+
+.title {
+  font-family: var(--fontTitle);
+  color: var(--colorOrange);
+  font-size: 3rem;
 }

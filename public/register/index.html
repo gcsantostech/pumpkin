@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css" />
     <script src="../js/alertMessage.js"></script>
     <script src="script.js" defer></script>
+    <script src="../script.js"></script>
     <link
       rel="shortcut icon"
       href="../assets/imgs/logo.svg"
@@ -25,25 +26,24 @@
     <title>Cadastra-se | Pumpkin</title>
   </head>
   <body>
-    <header class="mainHeader">
+     <header class="mainHeader">
       <nav>
         <a href="/#">
-          <img
-            src="../assets/imgs/logo.svg"
-            id="logoPumpkin"
-            alt="Logo Abóbora"
-          />
+          <img src="../assets/imgs/logo.svg" id="logoPumpkin" alt="Logo Abóbora" />
         </a>
         <div class="menu">
           <ul>
-            <a href="/#home">Início</a>
+            <a href="/#home" class="active">Início</a>
+            <a href="/#blog">Blog</a>
             <a href="/#howWorks">Como funciona</a>
-            <a href="/#dashboard">Dashboard</a>
-            <a href="/#aboutUs">Sobre nós</a>
+            <a href="../aboutMe/index.html">Sobre mim</a>
           </ul>
         </div>
-        <a href="../login/index.html">
-          <button class="btnGlass">Entrar</button>
+        <a href="login/index.html">
+          <button class="btnGlass">
+            <i class="ph ph-fingerprint-simple"></i>
+            Entrar
+          </button>
         </a>
       </nav>
     </header>

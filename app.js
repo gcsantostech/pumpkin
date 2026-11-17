@@ -1,13 +1,13 @@
-const ambiente_processo = "producao";
+const environment = "dev";
 
-const caminho_env = ambiente_processo === "producao" ? ".env" : ".env.dev";
+const pathEnv = environment === "prod" ? ".env" : ".env.dev";
 
-require("dotenv").config({ path: caminho_env });
+require("dotenv").config({ path: pathEnv });
 
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
-const PORTA_APP = process.env.APP_PORT;
+const PORT_APP = process.env.APP_PORT;
 const HOST_APP = process.env.APP_HOST;
 
 const app = express();
@@ -24,7 +24,7 @@ app.use(cors());
 app.use("/", indexRouter);
 app.use("/user", usuarioRouter);
 
-app.listen(PORTA_APP, () => {
+app.listen(PORT_APP, () => {
   console.log(`
     ##   ##  ######   #####             ####       ##     ######     ##              ##  ##    ####    ######  
     ##   ##  ##       ##  ##            ## ##     ####      ##      ####             ##  ##     ##         ##  
@@ -34,7 +34,7 @@ app.listen(PORTA_APP, () => {
     ### ###  ##       ##  ##            ## ##    ##  ##     ##     ##  ##             ####      ##     ##      
     ##   ##  ######   #####             ####     ##  ##     ##     ##  ##              ##      ####    ######  
     \n\n\n                                                                                                 
-    Servidor do seu site já está rodando! Acesse o caminho a seguir para visualizar .: http://${HOST_APP}:${PORTA_APP} :. \n\n
+    Servidor do seu site já está rodando! Acesse o caminho a seguir para visualizar .: http://${HOST_APP}:${PORT_APP} :. \n\n
     Você está rodando sua aplicação em ambiente de .:${process.env.AMBIENTE_PROCESSO}:. \n\n
     \tSe .:desenvolvimento:. você está se conectando ao banco local. \n
     \tSe .:producao:. você está se conectando ao banco remoto. \n\n

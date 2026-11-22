@@ -1,4 +1,4 @@
-var database = require("../database/config");
+const database = require("../database/config");
 
 function authenticate(email, senha) {
   console.log(

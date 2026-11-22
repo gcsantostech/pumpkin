@@ -1,4 +1,4 @@
-const usuarioModel = require("../models/userModel");
+const userModel = require("../models/userModel");
 
 function authenticateUser(req, res) {
   const email = req.body.email;
@@ -9,7 +9,7 @@ function authenticateUser(req, res) {
   if (password === undefined)
     return res.status(400).json({ message: "Sua senha está indefinida!" });
 
-  usuarioModel.authenticate(email, password)
+  userModel.authenticate(email, password)
   .then(result => {
     if (result.length === 1) return res.send(result[0]);
       return res.status(400)
@@ -36,8 +36,8 @@ function registerUser(req, res) {
   if (password === undefined)
     return res.status(400).json({ message: "Sua senha está undefined" });
 
-  usuarioModel.registerUser(name, email, username, password)
-  .then(result => {
+  userModel.registerUser(name, email, username, password)
+  .then(result => { 
     res.status(201).json({result});
   })
   .catch(error => {

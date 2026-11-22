@@ -2,7 +2,7 @@ const navsBtn = document.querySelectorAll(".btnNav");
 const pages = document.querySelectorAll(".page");
 
 // Recupera a última página selecionada
-const savePage = localStorage.getItem("pageSelected");
+const savePage = sessionStorage.getItem("pageSelected");
 
 // Verifica se existe uma página salva
 if (savePage) {
@@ -29,7 +29,7 @@ navsBtn.forEach((btn) => btn.addEventListener("click", () => {
     const page = document.getElementById(btn.dataset.page);
     page.classList.add("active");
 
-    localStorage.setItem("pageSelected", btn.dataset.page);
+    sessionStorage.setItem("pageSelected", btn.dataset.page);
 
 }));
 

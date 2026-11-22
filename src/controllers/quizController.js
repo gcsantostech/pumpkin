@@ -52,8 +52,27 @@ function registerAnswer(req, res) {
   }
 }
 
+function creativeProfile(req, res) {
+  const userId = req.body.user_id
+  const attemptId = req.body.attempt_id
+
+  if (userId === undefined)
+    return res.status(400).json()
+  if (attemptId === undefined)
+    return res.status(400).json()
+
+  quizModel.creativeProfile(attemptId, userId)
+  .then(result => {
+    res.status(200).json(result)
+  })
+  .catch(error => {
+    res.status(500).json(error)
+  })
+}
+
 module.exports = {
   questionsQuiz,
   registerAttempt,
-  registerAnswer
+  registerAnswer,
+  creativeProfile
 };

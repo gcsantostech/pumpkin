@@ -41,7 +41,7 @@ function dataChartRadar(user_id) {
   return database.execute(instructionSql)
 }
 
-function dataChartDougnut(user_id) {
+function dataChartDoughnut(user_id) {
   const instructionSql = `
     SELECT
       cp.profile_name AS profile_name,
@@ -63,5 +63,5 @@ function dataChartDougnut(user_id) {
 module.exports = {
   dataDashboard,
   dataChartRadar,
-  dataChartDougnut
+  dataChartDoughnut
 };

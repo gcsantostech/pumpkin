@@ -25,7 +25,6 @@ function authenticateUser() {
     if (res.ok) {
       return res.json()
       .then(json => {
-
         sessionStorage.EMAIL_USER = json.email;
         sessionStorage.USERNAME_USER = json.username;
         sessionStorage.ID_USER = json.id;

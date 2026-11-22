@@ -8,7 +8,7 @@ const form = document.querySelector("form");
 const iconError = "<i class='ph ph-warning-circle'></i>";
 const iconCheck = "<i class='ph ph-check'></i>";
 
-form.addEventListener("submit", (e) => {
+form.addEventListener("submit", (e) => {  
   e.preventDefault();
 });
 
@@ -128,4 +128,3 @@ const isEmpty = () => {
   }
   return empty;
 };
-

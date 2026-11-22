@@ -141,6 +141,29 @@ async function showResult() {
     });
 
     if (!resAnswers.ok) return alertMessage("error", resAnswers.json());
+
+    const resResult = await fetch("/quiz/result-profile", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        user_id: userId,
+        attempt_id: attemptId,
+      }),
+    });
+
+    if (!resResult.ok) return alertMessage("error", resResult.json());
+    const profiles = await resResult.json();
+
+    profilePrimary.innerHTML = profiles[0].profile_name;
+    descriptionPrimary.innerHTML = profiles[0].description;
+
+    if (profiles[1]) {
+      titleSecondary.innerHTML = "Perfil criativo secundário é:"
+      profileSecondary.innerHTML = profiles[1].profile_name;
+      descriptionSecondary.innerHTML = profiles[1].description;
+    }
   } catch (error) {
     console.log(error)
     alertMessage("error", error.message)

@@ -94,7 +94,25 @@
 
 .quizAlternatives {
   accent-color: var(--colorOrange);
-
 }
 
+.headerResult {
+  display: flex;
+  gap: 1rem;
+  align-items: start;
+  justify-content: start;
+}
 
+.headerResult h2 {
+  color: var(--colorOffWhite);
+}
+
+#profilePrimary{
+  font-family: var(--fontTitle);
+  color: var(--colorOrange);
+}
+
+#profileSecondary{
+  font-family: var(--fontTitle);
+  color: var(--colorOrange);
+}

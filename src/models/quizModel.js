@@ -56,6 +56,24 @@ function groupQuiz(rows) {
   return quiz;
 }
 
+function registerAttempt(user_id, quiz_id) {
+  const instructionSql = `
+    INSERT INTO quiz_attempt (user_id, quiz_id) VALUES 
+    (${user_id}, ${quiz_id});
+  `;
+  return database.execute(instructionSql);
+}
+
+function registerAnswer(attempt_id, question_id, option_id) {
+  const instructionSql = `
+    INSERT INTO user_answer (attempt_id, question_id, option_id) VALUES
+    (${attempt_id}, ${question_id}, ${option_id})
+  `
+  return database.execute(instructionSql)
+}
+
 module.exports = {
   questionsQuiz,
+  registerAttempt,
+  registerAnswer,
 };

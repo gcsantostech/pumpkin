@@ -17,6 +17,7 @@
     <script src="../js/alertMessage.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
     <script src="dashboard/script.js" defer></script>
+    <script src="quizzes/script.js" defer></script>
     <link
       rel="stylesheet"
       type="text/css"
@@ -27,9 +28,14 @@
       type="text/css"
       href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"
     />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/bold/style.css"
+    />
     <title>Pumpkin</title>
   </head>
-  <body>
+  <body onload="showQuiz()">
     <div class="userArea">
       <aside class="sideNav">
         <div class="logoContent">
@@ -66,8 +72,44 @@
       </aside>
       <div class="pages">
         <div class="page active" id="quizzes">
-          <h1 class="title">Quizzes</h1>
+          <div class="quiz-container">
+            <div id="quizStart" class="cardQuiz">
+              <h1 id="quizTitle"></h1>
+              <p id="quizDescription"></p>
+              
+              <div class="cardFooter">
+                <button class="btnGlass" onclick="startQuiz()">Começar</button>
+              </div>
+            </div>
+            
+            <div id="quizQuestions" class="cardQuiz cardAlternatives hidden">
+              <div class="cardHeader">
+                <div class="headerQuestions">
+                  <h2 id="numQuesiton"></h2>
+                  <h2 id="currentQuestion"></h2>
+                </div>
+                <button class="btnGlass" onclick="closeQuestion()"><i class="ph-bold ph-x"></i></button>
+              </div>
+              <div id="alternatives"></div>
+
+              <div class="cardFooter">
+                <button class="btnGlass" onclick="previousQuestion()">
+                  Voltar
+                </button>
+                <button class="btnGlass" onclick="nextQuestion()">
+                  Próximo
+                </button>
+              </div>
+            </div>
+
+            <div id="quizResult" class="cardQuiz hidden">
+              <h2>Seu resultado:</h2>
+              <h3 id="namePerfil"></h3>
+              <p id="descriptionPerfil"></p>
+            </div>
+          </div>
         </div>
+
         <div class="page" id="dashboard">
           <h1 class="title">Dashboard</h1>
           <div class="kpis">

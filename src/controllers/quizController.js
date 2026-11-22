@@ -30,7 +30,7 @@ function registerAttempt(req, res) {
     });
 }
 
-function registerAnswer(req, res) {
+async function registerAnswer(req, res) {
   const { attemptId, answers } = req.body;
 
   if (attemptId === undefined) return res.status(400).json();
@@ -38,7 +38,7 @@ function registerAnswer(req, res) {
 
   try {
     for (let i = 0; i < answers.length; i++) {
-      quizModel.registerAnswer(
+      await quizModel.registerAnswer(
         attemptId,
         answers[i].question_id,
         answers[i].option_id,

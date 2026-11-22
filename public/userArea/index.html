@@ -35,7 +35,7 @@
     />
     <title>Pumpkin</title>
   </head>
-  <body onload="showQuiz()">
+  <body>
     <div class="userArea">
       <aside class="sideNav">
         <div class="logoContent">
@@ -76,19 +76,21 @@
             <div id="quizStart" class="cardQuiz">
               <h1 id="quizTitle"></h1>
               <p id="quizDescription"></p>
-              
+
               <div class="cardFooter">
                 <button class="btnGlass" onclick="startQuiz()">Começar</button>
               </div>
             </div>
-            
+
             <div id="quizQuestions" class="cardQuiz cardAlternatives hidden">
               <div class="cardHeader">
                 <div class="headerQuestions">
                   <h2 id="numQuesiton"></h2>
                   <h2 id="currentQuestion"></h2>
                 </div>
-                <button class="btnGlass" onclick="closeQuestion()"><i class="ph-bold ph-x"></i></button>
+                <button class="btnGlass" onclick="closeQuestion()">
+                  <i class="ph-bold ph-x"></i>
+                </button>
               </div>
               <div id="alternatives"></div>
 
@@ -109,7 +111,7 @@
               </div>
 
               <p id="descriptionPrimary"></p>
-              
+
               <div class="headerResult">
                 <h2 id="titleSecondary"></h2>
                 <h2 id="profileSecondary"></h2>
@@ -128,21 +130,31 @@
         <div class="page" id="dashboard">
           <h1 class="title">Dashboard</h1>
           <div class="kpis">
+
             <div class="kpi">
               <span class="kpiTitle">Perfil predominante</span>
-              <span class="kpiPerfil">Ousado <span>80%</span></span>
+              <div class="kpiContent">
+                <span id="kpiProfilePrimary">---</span>
+                <span id="kpiPrimaryPorcent">---</span>
+              </div>
               <span class="kpiSubtitle">Maior pontuação</span>
             </div>
+            
             <div class="kpi">
               <span class="kpiTitle">Quizzes concluídos</span>
-              <span class="kpiValue">3</span>
+              <span class="kpiValue" id="kpiQtdAttempt">---</span>
               <span class="kpiSubtitle">Total de tentivas</span>
             </div>
+
             <div class="kpi">
               <span class="kpiTitle">Perfil secundário</span>
-              <span class="kpiSubPerfil">Minimalista <span>72%</span></span>
+              <div class="kpiContent">
+                <span id="kpiProfileSecondary">---</span>
+                <span id="kpiSecondaryPorcent">---</span>
+              </div>
               <span class="kpiSubtitle">Segunda maior pontuação</span>
             </div>
+
             <div class="kpi">
               <span class="kpiTitle">Participação do perfil predominante</span>
               <span class="kpiValue">32%</span>

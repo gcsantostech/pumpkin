@@ -5,7 +5,8 @@ function dataDashboard(req, res) {
 
   if (userId === undefined) return res.status(400).json();
 
-  dashboardModel.dataDashboard(userId)
+  dashboardModel
+    .dataDashboard(userId)
     .then((result) => {
       res.status(200).json(result);
     })
@@ -20,7 +21,8 @@ function dataChartRadar(req, res) {
 
   if (userId === undefined) return res.status(400).json();
 
-  dashboardModel.dataChartRadar(userId)
+  dashboardModel
+    .dataChartRadar(userId)
     .then((result) => {
       res.status(200).json(result);
     })
@@ -30,7 +32,23 @@ function dataChartRadar(req, res) {
     });
 }
 
+function dataChartDoughnut(req, res) {
+  const { userId } = req.params;
+
+  if (userId === undefined) return res.status(400).json();
+
+  dashboardModel
+    .dataChartDoughnut(userId)
+    .then((result) => {
+      res.status(200).json(result);
+    })
+    .catch((error) => {
+      res.status(500).json(error);
+    });
+}
+
 module.exports = {
   dataDashboard,
   dataChartRadar,
+  dataChartDoughnut
 };

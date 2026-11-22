@@ -7,6 +7,10 @@ router.get("/questions", (req, res) => {
   quizController.questionsQuiz(req, res);
 });
 
+router.post("/result-profile", (req, res) => {
+  quizController.creativeProfile(req, res);
+});
+
 router.post("/register-attempt", (req, res) => {
   quizController.registerAttempt(req, res);
 });

@@ -21,7 +21,7 @@ function showQuiz() {
       quizDescription.innerHTML = quizData.quiz_description;
     })
     .catch((error) => {
-      alertMessage("error", error)
+      alertMessage("error", error);
     });
 }
 
@@ -39,14 +39,16 @@ function showQuestions() {
   question.innerHTML = quizData.questions[indexQuestion].question_text;
   numQuestion.innerHTML = `${indexQuestion + 1}.`;
 
-  const currentQuestion = quizData.questions[indexQuestion]
+  const currentQuestion = quizData.questions[indexQuestion];
   const savedAnswer = userAnswers[indexQuestion]
+    ? userAnswers[indexQuestion].option_id
+    : null;
 
   let options = "";
 
   for (let i = 0; i < currentQuestion.answer_options.length; i++) {
     const option = currentQuestion.answer_options[i];
-    const checked = savedAnswer === option.id ? "checked" : ""
+    const checked = savedAnswer === option.id ? "checked" : "";
 
     options += `
       <label class="alternativeItem">
@@ -65,10 +67,11 @@ function closeQuestion() {
 }
 
 function nextQuestion() {
-  if (!saveAnswer()) return;
+  if (!saveAnswer()) return alertMessage("error", "Selecione uma alternativa");
 
-  if (indexQuestion === quizData.questions.length - 1) showResult();
-  else {
+  if (indexQuestion === quizData.questions.length - 1) {
+    showResult();
+  } else {
     indexQuestion++;
     showQuestions();
   }
@@ -85,10 +88,61 @@ function saveAnswer() {
   const selectedOption = document.querySelector(
     'input[name="alternative"]:checked',
   );
-  
+
   if (selectedOption === null) return false;
-  
-  userAnswers[indexQuestion] = Number(selectedOption.value);
-  console.log(userAnswers)
+
+  userAnswers[indexQuestion] = {
+    question_id: quizData.questions[indexQuestion].id,
+    option_id: Number(selectedOption.value),
+  };
+
   return true;
+}
+
+
+async function showResult() {
+  const cardResult = document.querySelector("#quizResult");
+  const cardQuestions = document.querySelector("#quizQuestions");
+  const profilePrimary = document.querySelector("#profilePrimary");
+  const descriptionPrimary = document.querySelector("#descriptionPrimary");
+  const titleSecondary = document.querySelector("#titleSecondary");
+  const profileSecondary = document.querySelector("#profileSecondary");
+  const descriptionSecondary = document.querySelector("#descriptionSecondary");
+  
+  cardResult.style.display = "flex";
+  cardQuestions.style.display = "none";
+
+  const userId = sessionStorage.getItem("ID_USER");
+
+  try {
+    const resAttmept = await fetch("/quiz/register-attempt", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        user_id: userId,
+        quiz_id: quizData.id,
+      }),
+    });
+
+    if (!resAttmept.ok) return alertMessage("error", resAttmept.json());
+    const { attemptId } = await resAttmept.json();
+
+    const resAnswers = await fetch("/quiz/register-answer", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        attemptId: attemptId,
+        answers: userAnswers,
+      }),
+    });
+
+    if (!resAnswers.ok) return alertMessage("error", resAnswers.json());
+  } catch (error) {
+    console.log(error)
+    alertMessage("error", error.message)
+  }
 }

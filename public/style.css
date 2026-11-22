@@ -1,5 +1,6 @@
 body {
   background-color: var(--colorBlack);
+  overflow-x: hidden;
 }
 
 #home {
@@ -37,6 +38,13 @@ body {
   font-size: 1.2rem;
 }
 
-.mainTitle .subtitle .keyword {
+.keyword {
   color: var(--colorOrange);
+  font-weight: 600;
+}
+
+.title {
+  font-family: var(--fontTitle);
+  color: var(--colorOrange);
+  font-size: 3rem;
 }

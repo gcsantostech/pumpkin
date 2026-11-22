@@ -72,8 +72,31 @@ function registerAnswer(attempt_id, question_id, option_id) {
   return database.execute(instructionSql)
 }
 
+function creativeProfile(attempt_id, user_id) {
+  const instructionSql = `
+    SELECT
+      cp.id,
+      cp.profile_name AS profile_name,
+      cp.description AS description,
+      SUM(ao.score) as total_score
+    FROM quiz_attempt qa JOIN user_answer ua
+      ON qa.id = ua.attempt_id
+    JOIN answer_option ao 
+      ON ao.id = ua.option_id
+    JOIN  creative_profile cp
+      ON cp.id = ao.profile_id
+    WHERE qa.id = ${attempt_id} AND qa.user_id = ${user_id}
+    GROUP BY cp.id, user_id, profile_name, description
+    ORDER BY total_score DESC, cp.id ASC
+    LIMIT 2;
+  `
+
+  return database.execute(instructionSql)
+}
+
 module.exports = {
   questionsQuiz,
   registerAttempt,
   registerAnswer,
+  creativeProfile
 };

@@ -24,6 +24,7 @@ function showQuiz() {
       alertMessage("error", error);
     });
 }
+showQuiz();
 
 function startQuiz() {
   cardQuestions.style.display = "flex";
@@ -99,7 +100,6 @@ function saveAnswer() {
   return true;
 }
 
-
 async function showResult() {
   const cardResult = document.querySelector("#quizResult");
   const cardQuestions = document.querySelector("#quizQuestions");
@@ -108,7 +108,7 @@ async function showResult() {
   const titleSecondary = document.querySelector("#titleSecondary");
   const profileSecondary = document.querySelector("#profileSecondary");
   const descriptionSecondary = document.querySelector("#descriptionSecondary");
-  
+
   cardResult.style.display = "flex";
   cardQuestions.style.display = "none";
 
@@ -126,7 +126,10 @@ async function showResult() {
       }),
     });
 
-    if (!resAttmept.ok) return alertMessage("error", resAttmept.json());
+    if (!resAttmept.ok) 
+      return resAttmept.json().then(json => {
+        alertMessage("error", json)}
+      );
     const { attemptId } = await resAttmept.json();
 
     const resAnswers = await fetch("/quiz/register-answer", {
@@ -140,7 +143,10 @@ async function showResult() {
       }),
     });
 
-    if (!resAnswers.ok) return alertMessage("error", resAnswers.json());
+    if (!resAnswers.ok) 
+        return resAnswers.json().then(json => {
+        alertMessage("error", json)}
+      );
 
     const resResult = await fetch("/quiz/result-profile", {
       method: "POST",
@@ -153,19 +159,22 @@ async function showResult() {
       }),
     });
 
-    if (!resResult.ok) return alertMessage("error", resResult.json());
+    if (!resResult.ok) 
+      return resResult.json().then(json => {
+        alertMessage("error", json)}
+      );
     const profiles = await resResult.json();
 
     profilePrimary.innerHTML = profiles[0].profile_name;
     descriptionPrimary.innerHTML = profiles[0].description;
 
     if (profiles[1]) {
-      titleSecondary.innerHTML = "Perfil criativo secundário é:"
+      titleSecondary.innerHTML = "Perfil criativo secundário é:";
       profileSecondary.innerHTML = profiles[1].profile_name;
       descriptionSecondary.innerHTML = profiles[1].description;
     }
   } catch (error) {
-    console.log(error)
-    alertMessage("error", error.message)
+    console.log(error);
+    alertMessage("error", error.message);
   }
 }

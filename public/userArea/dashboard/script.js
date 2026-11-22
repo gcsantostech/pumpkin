@@ -41,12 +41,6 @@ async function showChartRadar() {
   profilePrimaryPercent.innerHTML = `${dataRadar.scores[0].toFixed(1)}%`;
   profileSecondaryPercent.innerHTML = `${dataRadar.scores[1].toFixed(1)}%`;
 
-  return dataRadar;
-}
-
-async function showCharts() {
-  const dataRadar = await showChartRadar();
-
   const dataChartRadar = {
     labels: dataRadar.labels,
     datasets: [
@@ -127,13 +121,41 @@ async function showCharts() {
       },
     },
   });
+}
+showChartRadar();
 
-  const dataChartDougnut = {
-    labels: ["Ousado", "Clássico", "Minimalista", "Expressivo"],
+async function showCharDoughnut() {
+  const userId = sessionStorage.getItem("ID_USER");
+  const profileParticipation = document.querySelector("#profileParticipation")
+
+  const res = await fetch(`/dashboard/chart-doughnut/user/${userId}`);
+  const data = await res.json();
+
+  const dataDoughnut = {
+   labels: [],
+   scores: []
+  }
+
+  let scoreTotal = 0;
+  for (let i = 0; i < data.length; i++) {
+    dataDoughnut.labels[i] = data[i].profile_name
+    dataDoughnut.scores[i] = data[i].score_total
+    scoreTotal += Number(data[i].score_total);
+  }
+
+  for (let i = 0; i < data.length; i++) {    
+    const score = data[i].score_total
+    dataDoughnut.scores[i] = ((score / scoreTotal) * 100).toFixed(1)
+  }
+
+  profileParticipation.textContent = `${dataDoughnut.scores[0]}`
+
+  const dataChartDoughnut = {
+    labels: dataDoughnut.labels,
     datasets: [
       {
         label: "Participação",
-        data: [30, 30, 25, 15],
+        data: dataDoughnut.scores,
         backgroundColor: ["#FB5616", "#FB1616", "#edb20f", "#be5600"],
         hoverOffset: 4,
         borderColor: "#00000000",
@@ -143,7 +165,7 @@ async function showCharts() {
 
   new Chart(ctxDoughnut, {
     type: "doughnut",
-    data: dataChartDougnut,
+    data: dataChartDoughnut,
     options: {
       responsive: true,
       maintainAspectRatio: false,
@@ -179,5 +201,4 @@ async function showCharts() {
     },
   });
 }
-
-showCharts();
+showCharDoughnut();

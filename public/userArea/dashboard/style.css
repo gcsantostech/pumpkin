@@ -8,16 +8,6 @@
   color: var(--colorOffWhite);
 }
 
-.title {
-  font-family: var(--fontTitle);
-  color: var(--colorOrange);
-}
-
-.subtile {
-  font-size: 1.5rem;
-  color: var(--colorOrange);
-}
-
 .kpis {
   display: flex;
   gap: 1rem;
@@ -46,7 +36,7 @@
   font-weight: 600;
   font-family: var(--fontTitle);
   color: var(--colorOrange);
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
 .kpiContent {

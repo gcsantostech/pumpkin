@@ -126,29 +126,31 @@ showChartRadar();
 
 async function showCharDoughnut() {
   const userId = sessionStorage.getItem("ID_USER");
-  const profileParticipation = document.querySelector("#profileParticipation")
+  const profileParticipation = document.querySelector("#profileParticipation");
 
   const res = await fetch(`/dashboard/chart-doughnut/user/${userId}`);
   const data = await res.json();
 
   const dataDoughnut = {
-   labels: [],
-   scores: []
-  }
+    labels: [],
+    scores: [],
+  };
 
   let scoreTotal = 0;
   for (let i = 0; i < data.length; i++) {
-    dataDoughnut.labels[i] = data[i].profile_name
-    dataDoughnut.scores[i] = data[i].score_total
+    dataDoughnut.labels[i] = data[i].profile_name;
+    dataDoughnut.scores[i] = data[i].score_total;
     scoreTotal += Number(data[i].score_total);
   }
 
-  for (let i = 0; i < data.length; i++) {    
-    const score = data[i].score_total
-    dataDoughnut.scores[i] = ((score / scoreTotal) * 100).toFixed(1)
+  for (let i = 0; i < data.length; i++) {
+    const score = data[i].score_total;
+    dataDoughnut.scores[i] = ((score / scoreTotal) * 100).toFixed(1);
   }
 
-  profileParticipation.textContent = `${dataDoughnut.scores[0]}`
+  if (dataDoughnut.scores[0] !== undefined) {
+    profileParticipation.textContent = `${dataDoughnut.scores[0]}%`;
+  }
 
   const dataChartDoughnut = {
     labels: dataDoughnut.labels,

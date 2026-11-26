@@ -126,10 +126,10 @@ async function showResult() {
       }),
     });
 
-    if (!resAttmept.ok) 
-      return resAttmept.json().then(json => {
-        alertMessage("error", json)}
-      );
+    if (!resAttmept.ok)
+      return resAttmept.json().then((json) => {
+        alertMessage("error", json);
+      });
     const { attemptId } = await resAttmept.json();
 
     const resAnswers = await fetch("/quiz/register-answer", {
@@ -143,10 +143,10 @@ async function showResult() {
       }),
     });
 
-    if (!resAnswers.ok) 
-        return resAnswers.json().then(json => {
-        alertMessage("error", json)}
-      );
+    if (!resAnswers.ok)
+      return resAnswers.json().then((json) => {
+        alertMessage("error", json);
+      });
 
     const resResult = await fetch("/quiz/result-profile", {
       method: "POST",
@@ -159,10 +159,10 @@ async function showResult() {
       }),
     });
 
-    if (!resResult.ok) 
-      return resResult.json().then(json => {
-        alertMessage("error", json)}
-      );
+    if (!resResult.ok)
+      return resResult.json().then((json) => {
+        alertMessage("error", json);
+      });
     const profiles = await resResult.json();
 
     profilePrimary.innerHTML = profiles[0].profile_name;

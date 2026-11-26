@@ -48,7 +48,7 @@
           </a>
         </div>
         <div class="sideMenu">
-          <div class="btnNav active" data-page="quizzes">
+          <div class="btnNav active" data-page="quiz">
             <i class="ph ph-check-circle"></i>
             <button>Quizzes</button>
           </div>
@@ -71,7 +71,7 @@
         </div>
       </aside>
       <div class="pages">
-        <div class="page active" id="quizzes">
+        <div class="page active" id="quiz">
           <div class="quiz-container">
             <div id="quizStart" class="cardQuiz">
               <h1 id="quizTitle"></h1>
@@ -128,9 +128,8 @@
         </div>
 
         <div class="page" id="dashboard">
-          <h1 class="title">Dashboard</h1>
+          <h2 class="title">Dashboard</h2>
           <div class="kpis">
-
             <div class="kpi">
               <span class="kpiTitle">Perfil predominante</span>
               <div class="kpiContent">
@@ -139,7 +138,7 @@
               </div>
               <span class="kpiSubtitle">Maior pontuação</span>
             </div>
-            
+
             <div class="kpi">
               <span class="kpiTitle">Quizzes concluídos</span>
               <span class="kpiValue" id="kpiQtdAttempt">---</span>
@@ -157,7 +156,7 @@
 
             <div class="kpi">
               <span class="kpiTitle">Participação do perfil predominante</span>
-              <span class="kpiValue">32%</span>
+              <span class="kpiValue" id="profileParticipation">---</span>
             </div>
           </div>
 

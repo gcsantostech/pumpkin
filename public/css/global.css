@@ -34,17 +34,22 @@ body {
   display: flex;
   width: 100vw;
   font-size: 1rem;
-  padding-block: 1rem;
   position: fixed;
   z-index: 100;
+  padding-top: 0.5rem;
+  justify-content: center;
 }
 
 .mainHeader nav {
   display: flex;
-  width: 100%;
+  width: 70%;
   justify-content: space-between;
   margin-inline: 1.5rem;
   align-items: center;
+  padding-inline: 0.5rem;
+  background-color: #00000020;
+  backdrop-filter: blur(10px);
+  border-radius: 2rem;
 }
 
 #logoPumpkin {
@@ -52,22 +57,19 @@ body {
 }
 
 .menu {
-  background-color: var(--colorTransparent);
-  backdrop-filter: blur(10px);
-  /* padding-block: 0.8rem; */
+  padding: 0.2rem;
   border-radius: 10rem;
 }
 
 .menu ul {
   display: flex;
-  /* gap: 2.5rem; */
 }
 
 .menu ul a {
   color: var(--colorOffWhite);
   padding: 0.8rem 1rem;
   font-weight: 600;
-  transition:  0.3s ease;
+  transition: 0.3s ease;
 }
 
 .menu ul a:hover {
@@ -112,7 +114,7 @@ body {
   border-radius: var(--borderRadius);
   color: var(--colorOffWhite);
   font-weight: 600;
-  border: solid  3px;  
+  border: solid 3px;
   background-color: var(--colorBlack);
   transition: ease-in-out 0.3s;
 }
@@ -133,5 +135,74 @@ body {
 .title {
   font-family: var(--fontTitle);
   color: var(--colorOrange);
-  font-size: 3rem;
+  font-size: 2.5rem;
+}
+
+footer {
+  padding: 64px 60px 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footerTop {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 40px;
+}
+
+.footerBrand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footerBrand img {
+  width: 40px;
+  height: auto;
+}
+
+.footerTitle {
+  margin: 0;
+  font-size: 2rem;
+  color: var(--colorOrange);
+}
+
+.footerNav,
+.footerSocial {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+footer h3 {
+  margin: 0 0 4px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+footer a {
+  width: fit-content;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+footer a:hover {
+  color: var(--colorOrange);
+}
+
+.footerBottom {
+  max-width: 1200px;
+  margin: 48px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footerBottom p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
 }

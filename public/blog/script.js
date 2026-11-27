@@ -21,7 +21,7 @@ async function loadPosts() {
             <div class="blogCardBody">
               <h2>${post.title}</h2>
               <p>${post.sumary}</p>
-              <a href="${post.link}" class="blogLink">Saiba mais →</a>
+              <a href="${post.url}" class="blogLink">Saiba mais →</a>
             </div>
           </div>`;
     }

@@ -1,4 +1,4 @@
-const environment = "dev";
+const environment = "prod";
 
 const pathEnv = environment === "prod" ? ".env" : ".env.dev";
 
